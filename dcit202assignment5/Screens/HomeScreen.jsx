@@ -5,23 +5,24 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { ThemeContext } from '../ThemeContext';
 import SectionBlock from '../Components/SectionBlock';
 import TransferBlock from '../Components/TransferBlock';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const sectionData = [
-  { key: '1', iconName: "arrow-up-outline" },
-  { key: '2', iconName: "arrow-down-outline" },
-  { key: '3', iconName: "cloud-upload-outline" },
-  { key: '4', iconName: "cash-outline" }
+  { key: '1', iconName: "arrow-up-outline", label: "Send" },
+  { key: '2', iconName: "arrow-down-outline", label:"Recieve" },
+  { key: '3', iconName: "cash-outline", label: "Loan" },
+  { key: '4', iconName: "cloud-upload-outline", label: "TopUp" }
 ];
 
 const verticalData = [
-  { key: '1', iconName: 'logo-apple', pay: "$99", label: "Apple Store", miniLabel: "Entertainment", amountColour: 'Blue' },
-  { key: '2', iconName: 'musical-notes-outline', pay: "$-6,99", label: "Spotify", miniLabel: "Music" },
-  { key: '3', iconName: 'swap-horizontal-outline', pay: "$5,99", label: "Money Transfer", miniLabel: "Transaction", amountColour: 'Blue' },
-  { key: '4', iconName: 'cart-outline', pay: "$51,99", label: "Grocery", miniLabel: "Shopping", amountColour: 'Blue' },
-  { key: '5', iconName: 'logo-apple', pay: "$-12,99", label: "Apple Store", miniLabel: "Entertainment" },
-  { key: '6', iconName: 'swap-horizontal-outline', pay: "$16,99", label: "Money Transfer", miniLabel: "Transaction", amountColour: 'Blue' },
-  { key: '7', iconName: 'musical-notes-outline', pay: "$-5,99", label: "Spotify", miniLabel: "Music" },
-  { key: '8', iconName: 'cart-outline', pay: "$23,99", label: "Grocery", miniLabel: "Shopping", amountColour: 'Blue' },
+  { key: '1', iconName: 'logo-apple', pay: "$99", label: "Apple Store", miniLabel: "Entertainment", amountColour: 'blue' },
+  { key: '2', iconName: 'musical-notes-outline', pay: "$-6,99", label: "Spotify", miniLabel: "Music", amountColour: 'black' },
+  { key: '3', iconName: 'swap-horizontal-outline', pay: "$5,99", label: "Money Transfer", miniLabel: "Transaction", amountColour: 'blue' },
+  { key: '4', iconName: 'cart-outline', pay: "$51,99", label: "Grocery", miniLabel: "Shopping", amountColour: 'blue' },
+  { key: '5', iconName: 'logo-apple', pay: "$-12,99", label: "Apple Store", miniLabel: "Entertainment", amountColour: 'black' },
+  { key: '6', iconName: 'swap-horizontal-outline', pay: "$16,99", label: "Money Transfer", miniLabel: "Transaction", amountColour: 'blue' },
+  { key: '7', iconName: 'musical-notes-outline', pay: "$-5,99", label: "Spotify", miniLabel: "Music", amountColour: 'black' },
+  { key: '8', iconName: 'cart-outline', pay: "$23,99", label: "Grocery", miniLabel: "Shopping", amountColour: 'blue' },
 ];
 
 const visaCard = require("../assets/Card.png");
@@ -36,16 +37,9 @@ const HomeScreen = ({ navigation }) => {
       <View style={[styles.container, { backgroundColor: colors.backgroundColor }]}>
         <StatusBar style={isDarkTheme ? 'light' : 'dark'} />
         <ScrollView>
-          <View style={{ marginBottom: 15, marginTop: 30 }}>
-            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-              <Text
-                onPress={() => { navigation.navigate('Settings') }}
-                style={{ color: colors.textColor }}>
-                Home Screen
-              </Text>
-            </View>
-
-            <View style={{ flexDirection: 'row', marginBottom: 10 }}>
+          <View style={{ marginBottom: 15,  marginTop: 40}}>
+            
+            <View style={{ flexDirection: 'row', marginBottom: 10,  }}>
               <Image source={Profile} style={{ marginLeft: 30, margin: 8, marginRight: 10 }} />
 
               <View style={{ marginRight: 70 }}>
@@ -53,8 +47,8 @@ const HomeScreen = ({ navigation }) => {
                 <Text style={{ fontWeight: 'bold', fontSize: 22, color: colors.textColor }}>Eric Atsu</Text>
               </View>
 
-              <View style={styles.imageContainer}>
-                <Image source={Search} style={styles.image} />
+              <View style={[styles.imageContainer, { backgroundColor: isDarkTheme ? '#08192D' : '#f1f1f1' }]}>
+              <Ionicons name="search-outline" size={20} color={colors.textColor} />
               </View>
             </View>
 
@@ -69,6 +63,7 @@ const HomeScreen = ({ navigation }) => {
                 renderItem={({ item }) => (
                   <SectionBlock
                     iconName={item.iconName}
+                    label={item.label}
                   />
                 )}
                 contentContainerStyle={{ paddingLeft: 10, }}
